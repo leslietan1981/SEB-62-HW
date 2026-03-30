@@ -46,3 +46,5 @@ cd ../galaxy-far-far-away/
 rm -r tie-fighter-2/ tie-fighter-3
 cd x-wing
 touch the-force.txt
+cd ..
+rm -r death-star
