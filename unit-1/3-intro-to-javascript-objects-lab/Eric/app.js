@@ -174,7 +174,7 @@ const pokemon = [
 // console.log(pokemon[0].starter);
 // console.dir(pokemon, { maxArrayLength: null });
 
-console.log(pokemon[58].name); //used array 58 because array includes 0. Pokemon no.59 is actually Aracanine.
+// console.log(pokemon[58].name); //used array 58 because array includes 0. Pokemon no.59 is actually Aracanine.
 
 // console.log(game);
 
@@ -188,3 +188,27 @@ Solve Exercise 3 here:
 */
 
 game.difficulty = "Med";
+
+/*
+Exercise 4
+1. Select a starter Pokémon from the `pokemon` array. Remember, a starter Pokémon's `starter` property is true.
+2. Add this Pokémon to the `game.party` array. Which array method will you use to add them?
+
+
+Solve Exercise 4 here:
+*/
+
+game.party.push(pokemon[24]);
+
+/*
+Exercise 5
+1. Choose three more Pokémon from the `pokemon` array and add them to your party.
+2. Consider different attributes like 'type' or 'HP' for your selection. Which array method will you use to add them?
+
+
+Solve Exercise 5 here:
+*/
+
+game.party.push(pokemon[2], pokemon[5], pokemon[8]);
+
+console.log(game);
