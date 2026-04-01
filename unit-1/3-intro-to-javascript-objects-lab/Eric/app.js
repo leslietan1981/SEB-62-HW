@@ -175,3 +175,5 @@ const pokemon = [
 // console.dir(pokemon, { maxArrayLength: null });
 
 console.log(pokemon[58].name); //used array 58 because array includes 0. Pokemon no.59 is actually Aracanine.
+
+// console.log(game);
