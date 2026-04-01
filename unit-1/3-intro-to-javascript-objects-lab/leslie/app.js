@@ -196,3 +196,65 @@ Solve Exercise 3 here:
 
 game.difficulty = "Hard";
 console.log(game);
+
+/*
+Exercise 4
+1. Select a starter Pokémon from the `pokemon` array. Remember, a starter Pokémon's `starter` property is true.
+2. Add this Pokémon to the `game.party` array. Which array method will you use to add them?
+
+
+Solve Exercise 4 here:
+*/
+
+// Get pokemon of number 4
+for (const monster of pokemon) {
+  if (monster.number === 4) {
+    monsterInx = pokemon.indexOf(monster);
+
+    console.log("Name of Pokémon with number 4:", pokemon[monsterInx].name);
+    if (monster.starter) {
+      console.log(monster.name, "is a starter Pokémon");
+      game.party.push(monster);
+      console.log(game);
+    }
+    break;
+  }
+}
+
+/*
+Exercise 5
+1. Choose three more Pokémon from the `pokemon` array and add them to your party.
+2. Consider different attributes like 'type' or 'HP' for your selection. Which array method will you use to add them?
+
+
+Solve Exercise 5 here:
+*/
+
+// I will pick 3 highest HP pokémons from type dragon, psychic and ghost
+const criteriaFound = {};
+for (const monster of pokemon) {
+  switch (monster.type) {
+    case "dragon":
+    case "psychic":
+    case "ghost":
+      if (monster.type in criteriaFound) {
+        if (monster.hp > criteriaFound[monster.type].hp) {
+          criteriaFound[monster.type] = monster;
+          console.log("Replacing with a higher hp", monster.type);
+        }
+      } else {
+        criteriaFound[monster.type] = monster;
+        console.log("Registering a new", monster.type);
+      }
+      break;
+    default:
+      break;
+  }
+}
+// console.log(criteriaFound);
+game.party.push(
+  criteriaFound.dragon,
+  criteriaFound.psychic,
+  criteriaFound.ghost,
+);
+console.log(game);
