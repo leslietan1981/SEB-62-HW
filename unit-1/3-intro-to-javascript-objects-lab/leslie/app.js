@@ -344,3 +344,19 @@ for (const gym of game.gyms) {
   }
 }
 console.log(game.gyms);
+
+/*
+Exercise 11
+1. Complete gyms with a difficulty below 8. Reflect on how this is similar to or different from the previous gym exercises.
+(change the value of `complete` in the qualifying objects from false to true).
+
+Solve Exercise 11 here:
+*/
+
+difficultyToCheck = 8;
+for (const gym of game.gyms) {
+  if (gym.difficulty < difficultyToCheck && gym.completed === false) {
+    gym.completed = true;
+  }
+}
+console.log(game.gyms);
