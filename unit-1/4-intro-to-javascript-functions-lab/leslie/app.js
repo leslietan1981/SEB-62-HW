@@ -128,7 +128,42 @@ Example: calculateTip(50, 20) should return 10.
 Complete the exercise in the space below:
 */
 
+// Bill amount shifted to produced 2 decimals result
 const calculateTip = (bill, tipPercent) =>
   Math.round((bill * 100 * tipPercent) / 100) / 100;
 
 console.log("Exercise 7 Result:", calculateTip(50, 20));
+
+/*
+Exercise 8: convertTemperature()
+
+Write a function named convertTemperature. 
+It takes two arguments: a temperature and a string representing the 
+scale ('C' for Celsius, 'F' for Fahrenheit). 
+Convert the temperature to the other scale.
+
+Example: convertTemperature(32, 'C') should return 89.6 (Fahrenheit).
+Example: convertTemperature(32, 'F') should return 0 (Celsius).
+
+Complete the exercise in the space below:
+*/
+
+// Temperatures are shifted to produce 1 decimal result
+const convertTemperature = (temperature, scale) => {
+  const result = [];
+  switch (scale) {
+    case "C":
+      result[0] = Math.round(temperature * 10 * 1.8 + 32) / 10;
+      result[1] = "(Fahrenheit)";
+      break;
+    case "F":
+      result[0] = Math.round(((temperature * 10 - 32) * 5) / 9) / 10;
+      result[1] = "(Celsius)";
+      break;
+    default:
+      return "scale only accepts C or F";
+  }
+  return result.join(" ");
+};
+
+console.log("Exercise 8 Result:", convertTemperature(32, "C"));
