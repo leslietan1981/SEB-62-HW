@@ -31,9 +31,7 @@ Complete the exercise in the space below:
 
 // Trying out both ways
 // function isAdult(age) {
-const isAdult = (age) => {
-  return age < 18 ? "Minor" : "Adult";
-};
+const isAdult = (age) => (age < 18 ? "Minor" : "Adult");
 
 console.log("Exercise 2 Result:", isAdult(21));
 
@@ -50,9 +48,7 @@ Example: isCharAVowel('a') should return true.
 Complete the exercise in the space below:
 */
 
-const isCharAVowel = (char) => {
-  return "aeiou".includes(char.toLowerCase());
-};
+const isCharAVowel = (char) => "aeiou".includes(char.toLowerCase());
 
 console.log("Exercise 3 Result:", isCharAVowel("a"));
 
@@ -68,9 +64,7 @@ should return 'johnsmith@example.com'.
 Complete the exercise in the space below:
 */
 
-const generateEmail = (name, domain) => {
-  return [name, domain].join("@");
-};
+const generateEmail = (name, domain) => [name, domain].join("@");
 
 console.log("Exercise 4 Result:", generateEmail("johnsmith", "example.com"));
 
@@ -106,3 +100,18 @@ const greetUser = (name, timeOfDay) => {
 };
 
 console.log("Exercise 5 Result:", greetUser("Sam", "morning"));
+
+/*
+Exercise 6: maxOfThree()
+
+Define a function, maxOfThree. It should accept three numbers 
+and return the largest among them.
+
+Example: maxOfThree(17, 4, 9) should return 17.
+
+Complete the exercise in the space below:
+*/
+
+const maxOfThree = (num1, num2, num3) => Math.max(num1, num2, num3);
+
+console.log("Exercise 6 Result:", maxOfThree(5, 10, 8));
