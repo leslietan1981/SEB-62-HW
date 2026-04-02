@@ -82,20 +82,46 @@
 // console.log("Exercise 4 Result:", generateEmail("johnsmith", "example.com"));
 // // Expected result would be johnsmith@example.com
 
+// /*
+// Exercise 5: greetUser()
+
+// Define a function called greetUser. It should take a name and a
+// time of day (morning, afternoon, evening) and return a personalized
+// greeting.
+
+// Example: greetUser('Sam', 'morning') should return "Good morning, Sam!"
+
+// Complete the exercise in the space below:
+// */
+
+// // this is template literal
+// const greetUser = (name, timeOfDay) => `Good ${timeOfDay}, ${name}!`;
+
+// console.log("Exercise 5 Result:", greetUser("Sam", "morning"));
+// // Expected result would be Good morning, Sam!
+
 /*
-Exercise 5: greetUser()
+Exercise 6: maxOfThree()
 
-Define a function called greetUser. It should take a name and a 
-time of day (morning, afternoon, evening) and return a personalized 
-greeting.
+Define a function, maxOfThree. It should accept three numbers 
+and return the largest among them.
 
-Example: greetUser('Sam', 'morning') should return "Good morning, Sam!"
+Example: maxOfThree(17, 4, 9) should return 17.
 
 Complete the exercise in the space below:
 */
 
-// this is template literal
-const greetUser = (name, timeOfDay) => `Good ${timeOfDay}, ${name}!`;
+// Practice declarative function
+function maxOfThree(x, y, z) {
+  if (x >= y && x >= z) {
+    return x;
+  } else if (y >= z) {
+    return y;
+  } else return z;
+}
 
-console.log("Exercise 5 Result:", greetUser("Sam", "morning"));
-// Expected result would be Good morning, Sam!
+// Try ternary
+const maxOfThreeT = (x, y, z) => (x >= y && x >= z ? x : y >= z ? y : z);
+
+console.log("Exercise 6 Result:", maxOfThree(5, 10, 8));
+console.log("Exercise 6 Result using ternary:", maxOfThreeT(5, 10, 8));
