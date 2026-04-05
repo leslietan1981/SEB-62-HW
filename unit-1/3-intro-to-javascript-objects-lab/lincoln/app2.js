@@ -303,3 +303,12 @@ for (const poke of pokemon) {
 // console.log(pokemonSortedByType);
 console.dir(pokemonSortedByType, { maxArrayLength: null });
 console.log(count + " Pokemon checked"); // so that after sorted you can ensure all 151 pokemons are accounted for
+
+// Desmond's comments
+// easier way to do it is to create the key and array if the key is not found
+// the pseudocode "formula"
+// if (key is found) {
+//    add pokimon to array
+// } else {
+//    create new key with array with this pokemon as 1st element
+// }
