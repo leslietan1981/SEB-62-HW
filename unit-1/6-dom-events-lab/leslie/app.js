@@ -169,9 +169,9 @@ function resolveActions() {
     );
   }
   // console.log(multiplicativeOpArr);
-  // console.log(formattedActions);
+  console.log(formattedActions);
 
-  let evaluatedResult = formattedActions[0];
+  let evaluatedResult = +formattedActions[0];
 
   if (formattedActions.length >= 3) {
     for (let i = 2; i < formattedActions.length; i += 2) {
@@ -179,7 +179,7 @@ function resolveActions() {
       let currentValue = formattedActions[i];
 
       if (currentOperator === "+") {
-        evaluatedResult += currentValue;
+        evaluatedResult += +currentValue;
       } else if (currentOperator === "-") {
         evaluatedResult -= currentValue;
       }
