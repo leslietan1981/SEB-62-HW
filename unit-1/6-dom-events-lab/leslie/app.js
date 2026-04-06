@@ -99,7 +99,7 @@ function addAction(type, value, isFirst = false) {
     value: value,
     isFirst: isFirst,
   });
-  console.log(cachedActions);
+  // console.log(cachedActions);
 }
 
 function clearActions(defaultValue = "0") {
@@ -169,7 +169,7 @@ function resolveActions() {
     );
   }
   // console.log(multiplicativeOpArr);
-  console.log(formattedActions);
+  // console.log(formattedActions);
 
   let evaluatedResult = +formattedActions[0];
 
