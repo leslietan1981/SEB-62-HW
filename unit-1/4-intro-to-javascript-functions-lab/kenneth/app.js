@@ -28,14 +28,13 @@ Example: isAdult(21) should return 'Adult'.
 
 Complete the exercise in the space below:
 */
-
-const isAdult = (age) => {
-  if (age >= 18) {
+function isAdult(age) {
+  if ((age) => 18) {
     return "Adult";
   } else {
     return "Minor";
   }
-};
+}
 
 console.log("Exercise 2 Result:", isAdult(21));
 
@@ -53,24 +52,16 @@ Complete the exercise in the space below:
 */
 
 // Desmond's comments
-// You can also use the string "aeiou" and use
-// the includes function.
+// you can use toUpperCase or toLowerCase, so
+// that you don't need to do both capital and
+// small for the vowels.
 
-const isCharAVowel = (vowel) => {
-  if (
-    vowel === "a" ||
-    vowel === "e" ||
-    vowel === "i" ||
-    vowel === "o" ||
-    vowel === "u"
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
+function isCharAVowel(char) {
+  const vowels = "aeiouAEIOU";
+  return vowels.includes(char);
+}
 
-console.log("Exercise 3 Result:", isCharAVowel("d"));
+console.log("Exercise 3 Result:", isCharAVowel("a"));
 
 /*
 Exercise 4: generateEmail()
@@ -83,11 +74,11 @@ should return 'johnsmith@example.com'.
 
 Complete the exercise in the space below:
 */
-const generateEmail = (handle, address) => {
-  return `${handle}@${address}`;
-};
+function generateEmail(name, domain) {
+  return `${name}@${domain}`;
+}
 
-console.log("Exercise 4 Result:", generateEmail("eric.tan", "gmail.com"));
+console.log("Exercise 4 Result:", generateEmail("johnsmith", "example.com"));
 
 /*
 Exercise 5: greetUser()
@@ -100,12 +91,11 @@ Example: greetUser('Sam', 'morning') should return "Good morning, Sam!"
 
 Complete the exercise in the space below:
 */
+function greetUser(name, timeOfDay) {
+  return `Good ${timeOfDay}, ${name}!`;
+}
 
-const greetUser = (name, dayType) => {
-  return `Good ${dayType}, ${name}!`;
-};
-
-console.log("Exercise 5 Result:", greetUser("Elton John", "Evening"));
+console.log("Exercise 5 Result:", greetUser("Sam", "morning"));
 
 /*
 Exercise 6: maxOfThree()
@@ -117,18 +107,11 @@ Example: maxOfThree(17, 4, 9) should return 17.
 
 Complete the exercise in the space below:
 */
+function maxOfThree(num1, num2, num3) {
+  return Math.max(num1, num2, num3);
+}
 
-const maxOfThree = (a, b, c) => {
-  if (a > b && a > c) {
-    return a;
-  } else if (b > a && b > c) {
-    return b;
-  } else {
-    return c;
-  }
-};
-
-console.log("Exercise 6 Result:", maxOfThree(321, 456, 199));
+console.log("Exercise 6 Result:", maxOfThree(5, 10, 8));
 
 /*
 Exercise 7: calculateTip()
@@ -141,12 +124,11 @@ Example: calculateTip(50, 20) should return 10.
 
 Complete the exercise in the space below:
 */
+function calculateTip(billAmt, tipPercent) {
+  return billAmt * (tipPercent / 100);
+}
 
-const calculateTip = (bill, tip) => {
-  return bill * (tip / 100);
-};
-
-console.log("Exercise 7 Result:", calculateTip(50, 20));
+console.log("Exercise 7 Result:", calculateTip(500, 10));
 
 /*
 Exercise 8: convertTemperature()
@@ -161,19 +143,19 @@ Example: convertTemperature(32, 'F') should return 0 (Celsius).
 
 Complete the exercise in the space below:
 */
-
-const convertTemperature = (degree, type) => {
-  if (type === "F") {
-    return degree * (9 / 5) + 32;
-  } else if (type === "C") {
-    return (degree - 32) * (5 / 9);
+function convertTemperature(temp, str) {
+  const celciusToFahrenheit = (temp * (9 / 5) + 32).toFixed(1);
+  const FahrenheitToCelcius = ((temp - 32) * (5 / 9)).toFixed(1);
+  if (str === "C") {
+    return `${celciusToFahrenheit} (Fahrenheit)`;
+  } else if (str === "F") {
+    return `${FahrenheitToCelcius} (Celsius)`;
   } else {
-    return "Invalid type. Enter either 'F' or 'C'.";
+    return `Please enter C or F`;
   }
-};
+}
 
-console.log("Exercise 8 Result:", convertTemperature(32, "F"));
-console.log("Exercise 8 Result:", convertTemperature(50, "C"));
+console.log("Exercise 8 Result:", convertTemperature(48, "F"));
 
 /*
 Exercise 9: basicCalculator()
@@ -190,23 +172,33 @@ Example: basicCalculator(10, 5, 'subtract') should return 5.
 
 Complete the exercise in the space below:
 */
-const basicCalculator = (no1, no2, type) => {
-  if (type === "add") {
-    return no1 + no2;
-  } else if (type === "subtract") {
-    return no1 - no2;
-  } else if (type === "multiply") {
-    return no1 * no2;
-  } else if (type === "divide") {
-    return no1 / no2;
-  } else if (no1 && no2 !== Number) {
-    return "input numbers only";
-  } else {
-    return "invalid type. Choose between 'add', 'subtract', 'multiply', 'divide'.";
-  }
-};
 
-console.log("Exercise 9 Result:", basicCalculator(10, 5, "add"));
+// Desmond's comments
+// if you are using return, you do not need the
+// break, as return already "breaks out" of the switch. Notice in VScode the break is slightly
+// off colour, if you hover over it, VScode
+// will tell you it is unreachable code.
+
+function basicCalculator(num1, num2, str) {
+  switch (str) {
+    case `add`:
+      return num1 + num2;
+      break;
+    case `subtract`:
+      return num1 - num2;
+      break;
+    case `multiply`:
+      return num1 * num2;
+      break;
+    case `divide`:
+      return num1 / num2;
+      break;
+    default:
+      return `Please enter a valid operation`;
+  }
+}
+
+console.log("Exercise 9 Result:", basicCalculator(10, 5, "multiply"));
 
 /*
 Exercise 10: calculateGrade()
@@ -222,22 +214,22 @@ Example: calculateGrade(100) should return A.
 
 Complete the exercise in the space below:
 */
+function calculateGrade(score) {
+  let grade = "";
+  grade =
+    score >= 90
+      ? "A"
+      : score >= 80
+        ? "B"
+        : score >= 70
+          ? "C"
+          : score >= 60
+            ? "D"
+            : "F";
+  return grade;
+}
 
-const calculateGrade = (score) => {
-  if (score >= 90) {
-    return "A";
-  } else if (score < 90 && score >= 80) {
-    return "B";
-  } else if (score < 80 && score >= 70) {
-    return "C";
-  } else if (score < 70 && score >= 60) {
-    return "D";
-  } else {
-    return "F";
-  }
-};
-
-console.log("Exercise 10 Result:", calculateGrade(81));
+console.log("Exercise 10 Result:", calculateGrade(65));
 
 /*
 Exercise 11: createUsername()
@@ -254,13 +246,12 @@ Example: createUsername('Samantha', 'Green') should return 'SamGre13'.
 
 Complete the exercise in the space below:
 */
-const createUsername = (firstName, lastName) => {
-  const firstNameSplice = firstName.slice(0, 3);
-  const lastNameSplice = lastName.slice(0, 3);
-  const usernameNumber = firstName.length + lastName.length;
-  return `${firstNameSplice}${lastNameSplice}${usernameNumber}`;
-};
-
+function createUsername(firstName, lastName) {
+  firstSet = firstName.substring(0, 3);
+  secondSet = lastName.substring(0, 3);
+  thirdSet = firstName.length + lastName.length;
+  return firstSet + secondSet + thirdSet;
+}
 console.log("Exercise 11 Result:", createUsername("Samantha", "Green"));
 
 /*
@@ -271,7 +262,8 @@ This function should return the count of arguments passed to it when called.
 
 Complete the exercise in the space below:
 */
+function numArgs(...args) {
+  return args.length;
+}
 
-console.log(
-  "Don't know how to do this just yet. Will review notes and come back to it.",
-);
+console.log("Exercise 12 Result:", numArgs(1, 2, 3, 4, 20, 55));
