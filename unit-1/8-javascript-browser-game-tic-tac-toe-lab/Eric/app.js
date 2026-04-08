@@ -78,6 +78,7 @@ function handleClick(event) {
   }
   placePiece(squareIndex);
   checkForWinner();
+  checkForTie();
 }
 
 squareEls.forEach((square) => {
@@ -90,10 +91,10 @@ function placePiece(index) {
 }
 
 function checkForWinner() {
-  if (board[0] !== "" && board[0] === board[1] && board[1] === board[2]) {
+  if (board[0] !== " " && board[0] === board[1] && board[1] === board[2]) {
     winner = true;
   }
-  if (board[3] !== "" && board[3] === board[4] && board[4] === board[5]) {
+  if (board[3] !== " " && board[3] === board[4] && board[4] === board[5]) {
     winner = true;
   }
   if (board[6] !== " " && board[6] === board[7] && board[7] === board[8]) {
@@ -113,8 +114,17 @@ function checkForWinner() {
   }
   if (board[2] !== " " && board[2] === board[4] && board[4] === board[6]) {
     winner = true;
-  } else winner = false;
+  }
+  console.log("winner:", winner);
 }
+
+checkForTie = () => {
+  if (winner === true || board.includes(" ") === true) {
+    return;
+  } else {
+    tie = true;
+  }
+};
 //7) Create Reset functionality. */
 
 init();
