@@ -104,9 +104,13 @@ born in the 1500's.
 let veryOldInventors = [];
 
 // Complete the exercise in the space below:
-veryOldInventors = inventors.filter((inventor) => {
-  return inventor.year >= 1500 && inventor.year < 1600;
-});
+
+// check if value is between start(inclusive) and end(exclusive)
+const isBornBetween = (value, start, end) => value >= start && value < end;
+veryOldInventors = inventors.filter((inventor) =>
+  isBornBetween(inventor.year, 1500, 1600),
+);
+
 // Check your work:
 console.log("Exercise 1 my result: ", veryOldInventors);
 console.log("Exercise 1 correct result: ", [
@@ -132,9 +136,10 @@ Hint: Return a new object literal from the callback that looks like:
 let inventorNames = [];
 
 // Complete the exercise in the space below:
-inventorNames = inventors.map((inventor) => {
-  return { first: inventor.first, last: inventor.last };
-});
+const getFirstNLast = ({ first, last }) => {
+  return { first: first, last: last };
+};
+inventorNames = inventors.map(getFirstNLast);
 
 // Check your work:
 console.log("Exercise 2 my result: ", inventorNames);
@@ -163,14 +168,8 @@ the past to those born most recently).
 let sortedByBirthYear = [];
 
 // Complete the exercise in the space below:
-sortedByBirthYear = inventors.sort((a, b) => {
-  if (a.year > b.year) {
-    return 1;
-  } else if (a.year < b.year) {
-    return -1;
-  }
-  return 0;
-});
+
+sortedByBirthYear = inventors.sort((a, b) => a.year - b.year);
 
 // Check your work:
 console.log("Exercise 3 my result: ", sortedByBirthYear);
@@ -205,7 +204,8 @@ from an array of inventor objects
 let inventorNamedAda = {};
 
 // Complete the exercise in the space below:
-inventorNamedAda = inventors.find((inventor) => inventor.first === "Ada");
+
+inventorNamedAda = inventors.find(({ first }) => first === "Ada");
 
 // Check your work:
 console.log("Exercise 4 my result: ", inventorNamedAda);
@@ -231,10 +231,8 @@ Hint: Use the String.prototype.split() method to separate the first and last
 let firstLast = [];
 
 // Complete the exercise in the space below:
-firstLast = people.map((person) => {
-  const splitName = person.split(", ");
-  return `${splitName[1]} ${splitName[0]}`;
-});
+
+firstLast = people.map((value) => value.split(", ").reverse().join(" "));
 
 // Check your work:
 console.log("Exercise 5 my result: ", firstLast);
@@ -296,9 +294,8 @@ old or older.
 let isAdultPresent = null;
 
 // Complete the exercise in the space below:
-isAdultPresent = devs.some((dev) => {
-  return dev.year <= 2008;
-});
+
+isAdultPresent = devs.some(({ year }) => new Date().getFullYear() - year >= 18);
 
 // Check your work:
 console.log("Exercise 6 my result: ", isAdultPresent);
@@ -320,9 +317,10 @@ Use Array.prototype.every() to determine if every person in the devs array is
 let isEveryone19OrOlder = null;
 
 // Complete the exercise in the space below:
-isEveryone19OrOlder = devs.every((dev) => {
-  return dev.year <= 2007;
-});
+
+isEveryone19OrOlder = devs.every(
+  ({ year }) => new Date().getFullYear() - year >= 19,
+);
 
 // Check your work:
 console.log("Exercise 7 my result: ", isEveryone19OrOlder);
@@ -340,9 +338,8 @@ a specific ID 823423 from an array of comment objects.
 let commentById = {};
 
 // Complete the exercise in the space below:
-commentById = comments.find((chicken) => {
-  return chicken.id === 823423;
-});
+
+commentById = comments.find(({ id }) => id === 823423);
 
 // Check your work:
 console.log("Exercise 8 my result: ", commentById);
@@ -360,9 +357,87 @@ of comment objects.
 let idx = null;
 
 // Complete the exercise in the space below:
-idx = comments.findIndex((monkey) => {
-  return monkey.id === 123523;
-});
+
+idx = comments.findIndex(({ id }) => id === 123523);
+
 // Check your work:
 console.log("Exercise 9 my result: ", idx);
 console.log("Exercise 9 correct result: ", 3);
+
+/*
+Level Up exercise 1: Array.prototype.reduce()
+
+Calculate the combined lifespan of all the inventors using 
+Array.prototype.reduce()
+
+- Each object in the array includes these properties: 
+  'first', 'last', 'year' (birth year), and 'passed' (year of death).
+- Use the Array.prototype.reduce() method to calculate the sum of the total 
+  years lived by all the inventors.
+- Store the total sum in the variable 'totalYearsLived'.
+
+Hints:
+
+- Inside the reduce callback function, calculate the lifespan of each inventor 
+  (passed - year).
+- Accumulate this lifespan in the 'totalYearsLived' variable.
+- Remember, reduce takes a callback function and an initial value for the 
+  accumulator.
+*/
+
+let totalYearsLived = 0;
+
+// Complete the exercise in the space below:
+
+const lifespan = ({ year, passed }) => passed - year;
+totalYearsLived = inventors.reduce(
+  (accumulatedYears, inventor) => accumulatedYears + lifespan(inventor),
+  0,
+);
+
+// Check your work:
+console.log("Level Up 1 my result: ", totalYearsLived);
+console.log("Level Up 1 correct result: ", 861);
+
+/*
+Level Up exercise 2: Array.prototype.reduce()
+
+Tallying travel methods using Array.prototype.reduce(). 
+
+Count the number of times each travel method appears in the 'travelMethods'
+array.
+
+- The resulting object should have keys as the travel methods 
+  ('car', 'truck', 'bike', etc.) and values as their respective counts.
+- Store this object in the variable 'travelMethodCounts'.
+
+Hints:
+- Inside the reduce function, check if the travel method already exists as a key
+  in your accumulator object. If it does, increment its count. If not, add it 
+  to the object and give it a value of 1.
+- Since you want to return an object, be sure to pass an empty {} for the 
+  initial value of the "accumulator".
+*/
+
+let travelMethodCounts = {};
+
+// Complete the exercise in the space below:
+
+travelMethodCounts = travelMethods.reduce((accumul, travelMethod) => {
+  if (travelMethod in accumul) {
+    accumul[travelMethod] += 1;
+  } else {
+    accumul[travelMethod] = 1;
+  }
+  return accumul;
+}, {});
+
+// Check your work:
+console.log("Level Up 2 my result: ", travelMethodCounts);
+console.log("Level Up 2 correct result: ", {
+  car: 5,
+  truck: 3,
+  bike: 2,
+  walk: 2,
+  van: 2,
+});
