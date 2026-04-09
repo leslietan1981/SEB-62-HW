@@ -36,3 +36,16 @@ h1 {
   justify-content: center;
   cursor: pointer;
 }
+
+.resetGame {
+  margin-top: 32px;
+  padding: 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: hsl(180, 24%, 85%);
+  transition: background-color 0.2s;
+}
+
+.resetGame:hover {
+  background-color: hsl(180, 24%, 75%);
+}
