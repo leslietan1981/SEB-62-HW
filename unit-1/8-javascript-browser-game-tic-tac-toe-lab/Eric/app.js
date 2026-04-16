@@ -93,6 +93,8 @@ function placePiece(index) {
   console.log(board);
 }
 
+// Desmond's comments
+// check out how to simplfy this, you can just copy this function and ask copilot about it.
 function checkForWinner() {
   if (board[0] !== " " && board[0] === board[1] && board[1] === board[2]) {
     winner = true;
