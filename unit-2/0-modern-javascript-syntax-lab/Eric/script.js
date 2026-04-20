@@ -243,7 +243,6 @@ console.log(theme);
 //    `adventurer.cat.age` returns `undefined` instead of an error.
 //
 // Starting code (don't modify this):
-
 const adventurer = {
   name: "Alice",
 };
