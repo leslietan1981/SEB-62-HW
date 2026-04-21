@@ -1,11 +1,12 @@
 import React from "react";
 import "./WeatherForecast.css";
+import WeatherIcon from "./WeatherIcon";
 
 const WeatherForecast = (props) => {
   return (
     <div className="weather">
       <h2>{props.day}</h2>
-      <img src={props.img} alt={props.imgAlt} />
+      <WeatherIcon src={props.img} alt={props.imgAlt} />
       <p>
         <span>conditions: </span>
         {props.conditions}
