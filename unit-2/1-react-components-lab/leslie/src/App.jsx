@@ -40,7 +40,7 @@ const weatherForecasts = [
 ];
 
 function App() {
-  const weatherData = weatherForecasts.map((item, idx) => {
+  const weatherForecastsData = weatherForecasts.map((item, idx) => {
     return (
       <WeatherForecast
         day={item.day}
@@ -54,7 +54,7 @@ function App() {
   return (
     <>
       <h1 className="centered">Local Weather</h1>
-      <section>{weatherData}</section>
+      <section>{weatherForecastsData}</section>
     </>
   );
 }
