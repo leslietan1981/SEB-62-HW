@@ -1,5 +1,6 @@
 import React from "react";
 import WeatherForecast from "./WeatherForecast";
+import ErrorComponent from "./ErrorComponent";
 
 const weatherForecasts = [
   {
@@ -46,7 +47,6 @@ function App() {
       <section>
         {weatherForecasts.map((forecast) => (
           <WeatherForecast
-            key={forecast.day}
             day={forecast.day}
             img={forecast.img}
             imgAlt={forecast.imgAlt}
@@ -55,6 +55,7 @@ function App() {
           />
         ))}
       </section>
+      <ErrorComponent />
     </>
   );
 }
