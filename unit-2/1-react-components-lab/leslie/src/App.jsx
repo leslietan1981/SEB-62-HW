@@ -48,6 +48,7 @@ function App() {
         imgAlt={item.imgAlt}
         conditions={item.conditions}
         time={item.time}
+        key={idx}
       />
     );
   });
