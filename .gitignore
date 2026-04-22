@@ -128,18 +128,6 @@ dist/
 
 # Ignore python cache
 **/__pycache__/
-unit-2/2-react-state-management-lab/starter-codes/package-lock.json
-unit-2/2-react-state-management-lab/starter-codes/package.json
-unit-2/2-react-state-management-lab/starter-codes/public/ga.ico
-unit-2/2-react-state-management-lab/starter-codes/src/App copy.jsx
-unit-2/2-react-state-management-lab/starter-codes/src/ErrorComponent.jsx
-unit-2/2-react-state-management-lab/starter-codes/src/main.jsx
-unit-2/2-react-state-management-lab/starter-codes/vite.config.js
-unit-2/2-react-state-management-lab/starter-codes/index.html
-unit-2/2-react-state-management-lab/starter-codes/src/App copy 2.jsx
+
 unit-2/2-react-state-management-lab/lincoln/src/App copy 2.jsx
-unit-2/2-react-state-management-lab/lincoln/public/ga.ico
-unit-2/2-react-state-management-lab/lincoln/src/ErrorComponent.jsx
-unit-2/2-react-state-management-lab/lincoln/src/main.jsx
-unit-2/2-react-state-management-lab/lincoln/vite.config.js
-unit-2/2-react-state-management-lab/lincoln/package.json
+
