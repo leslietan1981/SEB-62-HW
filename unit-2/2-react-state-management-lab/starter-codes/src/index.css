@@ -23,8 +23,18 @@ body {
 
 .zombieFighters {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .myTeam {
   display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  height: 150px;
+}
+
+.name {
+  font-weight: bold;
 }

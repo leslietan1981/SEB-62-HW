@@ -1,4 +1,14 @@
 import React, { useState } from "react";
+import survivorImg from "./images/survivor.jpg";
+import scavengerImg from "./images/scavenger.jpg";
+import shadowImg from "./images/shadow.jpg";
+import trackerImg from "./images/tracker.jpg";
+import sharpshooterImg from "./images/sharpshooter.jpg";
+import medicImg from "./images/medic.jpg";
+import engineerImg from "./images/engineer.jpg";
+import brawlerImg from "./images/brawler.jpg";
+import infiltratorImg from "./images/infiltrator.jpg";
+import leaderImg from "./images/leader.jpg";
 
 function App() {
   const [team, setTeam] = useState([]);
@@ -10,7 +20,7 @@ function App() {
       price: 12,
       strength: 6,
       agility: 4,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/0c2d6b.png",
+      img: survivorImg,
     },
     {
       id: 2,
@@ -18,7 +28,7 @@ function App() {
       price: 10,
       strength: 5,
       agility: 5,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/033a16.png",
+      img: scavengerImg,
     },
     {
       id: 3,
@@ -26,7 +36,7 @@ function App() {
       price: 18,
       strength: 7,
       agility: 8,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/262c36.png",
+      img: shadowImg,
     },
     {
       id: 4,
@@ -34,7 +44,7 @@ function App() {
       price: 14,
       strength: 7,
       agility: 6,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/3c1e70.png",
+      img: trackerImg,
     },
     {
       id: 5,
@@ -42,7 +52,7 @@ function App() {
       price: 20,
       strength: 6,
       agility: 8,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/4b2900.png",
+      img: sharpshooterImg,
     },
     {
       id: 6,
@@ -50,7 +60,7 @@ function App() {
       price: 15,
       strength: 5,
       agility: 7,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/5a1e02.png",
+      img: medicImg,
     },
     {
       id: 7,
@@ -58,7 +68,7 @@ function App() {
       price: 16,
       strength: 6,
       agility: 5,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/5e103e.png",
+      img: engineerImg,
     },
     {
       id: 8,
@@ -66,7 +76,7 @@ function App() {
       price: 11,
       strength: 8,
       agility: 3,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/67060c.png",
+      img: brawlerImg,
     },
     {
       id: 9,
@@ -74,7 +84,7 @@ function App() {
       price: 17,
       strength: 5,
       agility: 9,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/ac3220.png",
+      img: infiltratorImg,
     },
     {
       id: 10,
@@ -82,7 +92,7 @@ function App() {
       price: 22,
       strength: 7,
       agility: 6,
-      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/e41f26.png",
+      img: leaderImg,
     },
   ]);
 
@@ -121,8 +131,8 @@ function App() {
       <ul key={fighter.id}>
         <li>
           <img src={fighter.img} alt={fighter.name}></img>
-          <h4>ID: {fighter.id}</h4>
-          <h4>Name: {fighter.name}</h4>
+          <p>ID: {fighter.id}</p>
+          <p className="name">Name: {fighter.name}</p>
           <p>Hiring Price: {fighter.price}</p>
           <p>
             STR: {fighter.strength} AGI: {fighter.agility}
@@ -146,8 +156,8 @@ function App() {
       <ul key={fighter.id}>
         <li>
           <img src={fighter.img} alt={fighter.name}></img>
-          <h4>ID: {fighter.id}</h4>
-          <h4>Name: {fighter.name}</h4>
+          <p>ID: {fighter.id}</p>
+          <p className="name">Name: {fighter.name}</p>
           <p>Hiring Price: {fighter.price}</p>
           <p>
             STR: {fighter.strength} AGI: {fighter.agility}
@@ -187,12 +197,10 @@ function App() {
       <h4>Your current Team Total Strength: {totalStrength}</h4>
       <h4>Your current Team Total Agility: {totalAgility}</h4>
       <h4>Here are my Team Zombie Fighters</h4>
-      // add className here to flex display so that no need to scroll down
       <div className="myTeam">
         {arrayTeam.length !== 0 ? arrayTeam : "Pick some team members!"}
       </div>
       <h4>Here are the available Zombie Fighters</h4>
-      // add className here to flex display so that no need to scroll down
       <div className="zombieFighters">{arrayZombieFighters}</div>
     </div>
   );
