@@ -17,7 +17,7 @@ const BurgerStack = (props) => {
           style={{ marginLeft: "auto", color: "white" }}
           onClick={() => props.removeFromBurger(props.id)}
         >
-          -
+          X
         </button>
       </li>
     </ul>
