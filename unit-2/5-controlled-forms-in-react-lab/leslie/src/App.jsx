@@ -1,9 +1,11 @@
 import React from "react";
+import Bookshelf from "./components/Bookshelf";
 
 function App() {
   return (
-    <div>
-      <h2>GA SEB</h2>
+    <div className="container">
+      <h1>My Bookshelf</h1>
+      <Bookshelf />
     </div>
   );
 }
