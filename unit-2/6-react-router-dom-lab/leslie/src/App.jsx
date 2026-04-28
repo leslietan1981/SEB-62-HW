@@ -8,7 +8,7 @@ import MailboxForm from "./components/MailboxForm";
 import MailboxDetails from "./components/MailboxDetails";
 
 function App() {
-  const [uniqueId, setUniqueId] = useState(2);
+  const [uniqueId, setUniqueId] = useState(4);
   const initMailBoxes = [
     {
       _id: 1,
@@ -28,13 +28,18 @@ function App() {
   ];
   const [mailboxes, setMailboxes] = useState(initMailBoxes);
 
+  const addMailbox = (mailboxObj) => {
+    setMailboxes((prevState) => [...prevState, { ...mailboxObj, _id: uniqueId }]);
+    setUniqueId((prevState) => prevState + 1);
+  };
+
   return (
     <div className="container">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mailboxes" element={<MailboxList mailboxes={mailboxes} />} />
-        <Route path="/new-mailbox" element={<MailboxForm />} />
+        <Route path="/new-mailbox" element={<MailboxForm handleAdd={addMailbox} />} />
         <Route path="/mailboxes/:mailboxId" element={<MailboxDetails mailboxes={mailboxes} />} />
         <Route path="*" element={<FourOFour />} />
       </Routes>
