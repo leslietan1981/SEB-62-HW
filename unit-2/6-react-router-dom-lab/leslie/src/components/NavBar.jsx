@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router";
 import styles from "./NavBar.module.css";
+import paths from "../refs/paths";
 
 const NavBar = () => {
   return (
@@ -8,17 +9,17 @@ const NavBar = () => {
       <nav>
         <ul>
           <li>
-            <NavLink className={(navData) => (navData.isActive ? styles.active : "")} to="/">
+            <NavLink className={(navData) => (navData.isActive ? styles.active : "")} to={paths.home}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink className={(navData) => (navData.isActive ? styles.active : "")} to="/mailboxes">
+            <NavLink className={(navData) => (navData.isActive ? styles.active : "")} to={paths.mailboxes}>
               Mailboxes
             </NavLink>
           </li>
           <li>
-            <NavLink className={(navData) => (navData.isActive ? styles.active : "")} to="/new-mailbox">
+            <NavLink className={(navData) => (navData.isActive ? styles.active : "")} to={paths.newMailbox}>
               New Mailbox
             </NavLink>
           </li>
