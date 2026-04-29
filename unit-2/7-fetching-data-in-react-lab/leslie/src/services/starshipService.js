@@ -1,42 +1,28 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const useFetch = (url) => {
+const useStarshipData = () => {
   const [data, setData] = useState([]);
-  const [isPending, setIsPending] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [error, setError] = useState(null);
 
-  const fetchData = async () => {
-    setIsPending(true);
-    setIsError(false);
-    setError(null);
-
+  const fetchData = async (searchString = "") => {
     try {
-      const res = await fetch(url);
+      const res = await fetch("https://swapi.info/api/starships");
       if (!res.ok) {
-        setIsError(true);
-        setError("Fetch error.");
+        throw new Error("Fetch error.");
       }
 
       const resData = await res.json();
-      setData(resData);
+      if (searchString) {
+        const filtered = resData.filter((starship) => starship.name.includes(searchString));
+        setData(filtered);
+      } else {
+        setData(resData);
+      }
     } catch (error) {
-      setIsError(true);
-      setError(error instanceof Error ? error.message : "Error in starshipService.");
+      console.error(error);
     }
-
-    setIsPending(false);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return { data, isPending, isError, error };
+  return [data, fetchData];
 };
 
-const getStarshipsData = () => {
-  return useFetch("https://swapi.info/api/starships");
-};
-
-export { getStarshipsData };
+export { useStarshipData };
