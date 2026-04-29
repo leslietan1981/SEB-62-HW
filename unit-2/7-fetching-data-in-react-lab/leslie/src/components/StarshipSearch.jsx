@@ -4,11 +4,18 @@ import styles from "./StarshipSearch.module.css";
 const StarshipSearch = (props) => {
   const [searchInput, setSearchInput] = useState("");
 
-  const handleSearch = (searchString) => {
+  const handleSearch = () => {
     props.setStarships(searchInput);
     props.setSearchDetails({ searchTerm: "name", searchString: searchInput });
     setSearchInput("");
   };
+
+  const handleKeyDown = (isEnterKey) => {
+    if (isEnterKey) {
+      handleSearch(searchInput);
+    }
+  };
+
   return (
     <div className={`container ${styles.search}`}>
       <h2 className="row">Search</h2>
@@ -21,8 +28,9 @@ const StarshipSearch = (props) => {
             placeholder="starship name"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e.key === "Enter")}
           />
-          <button onClick={() => handleSearch(searchInput)}>Search</button>
+          <button onClick={handleSearch}>Search</button>
         </div>
         <div className="col-md-2"></div>
       </div>

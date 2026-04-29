@@ -14,6 +14,11 @@ function App() {
   return (
     <div className="container">
       <h1>Star Wars API</h1>
+      <div>
+        {searchDetails.searchString
+          ? `Your last searched term was "${searchDetails.searchString}".`
+          : `Search for a starship by name.`}
+      </div>
       <StarshipSearch setStarships={setStarships} setSearchDetails={setSearchDetails} />
       <StarshipList starships={starships} searchDetails={searchDetails} />
     </div>
