@@ -11,6 +11,7 @@ html {
 body {
   margin: 0;
   background-color: whitesmoke;
+  font-size: 0.8rem;
 }
 
 .centered {
@@ -19,4 +20,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h1 {
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid black;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
 }
