@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { use, useEffect } from "react";
 import styles from "./App.module.css";
 import { useAddLanguage, useDeleteLanguage, useLanguageListData } from "../services/dataService";
 import LanguageCard from "./LanguageCard";
 import AddLanguage from "./AddLanguage";
+import DataContext from "../context/data-context";
 
 const LanguageList = () => {
+  const dataCtx = use(DataContext);
+
   const [languageList, setLanguageList] = useLanguageListData();
   const addLanguageData = useAddLanguage();
   const deleteLanguageData = useDeleteLanguage();
@@ -12,6 +15,10 @@ const LanguageList = () => {
   useEffect(() => {
     setLanguageList();
   }, [addLanguageData.isAdded, deleteLanguageData.isDeleted]);
+
+  useEffect(() => {
+    dataCtx.setLanguageList(languageList);
+  }, [languageList]);
 
   const softCheckBeforeAdd = (newLanguage) => {
     return !languageList.some((item) => item.language.toLowerCase() === newLanguage.toLowerCase());

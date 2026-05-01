@@ -3,8 +3,8 @@ import styles from "./App.module.css";
 
 const EditPeople = (props) => {
   const [inputName, setInputName] = useState(props.name);
-  const [inputAge, setInputAge] = useState(props.age);
-  const [inputCountry, setInputCountry] = useState(props.country);
+  const [inputAge, setInputAge] = useState(props.age || "");
+  const [inputCountry, setInputCountry] = useState(props.country || "");
   const [errorMessage, setErrorMessage] = useState("");
   const [hasChanges, setHasChanges] = useState(false);
 

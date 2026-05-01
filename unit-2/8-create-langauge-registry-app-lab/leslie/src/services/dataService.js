@@ -59,7 +59,7 @@ const useDeleteLanguage = () => {
     setIsDeleted(false);
 
     try {
-      const res = await fetch(domain + "/lab/languages/" + languageName, {
+      const res = await fetch(domain + "/lab/languages/" + encodeURIComponent(languageName), {
         method: "DELETE",
       });
 
@@ -191,6 +191,66 @@ const useUpdatePerson = () => {
   return { isUpdated, patchDataRequest };
 };
 
+const usePersonLanguageListData = () => {
+  const [data, setData] = useState([]);
+
+  const fetchDataRequest = async (personId) => {
+    try {
+      const res = await fetch(domain + "/lab/users/languages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: personId,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Fetch error.");
+      }
+
+      const resData = await res.json();
+      setData(resData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return [data, fetchDataRequest];
+};
+
+const useAddPersonLanguage = () => {
+  const [isAdded, setIsAdded] = useState(false);
+
+  const addDataRequest = async (personId, newLanguage) => {
+    setIsAdded(false);
+
+    try {
+      const res = await fetch(domain + "/lab/users/languages", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: personId,
+          language: newLanguage,
+        }),
+      });
+
+      if (res.ok) {
+        setIsAdded(true);
+      } else {
+        throw new Error("Fetch error.");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { isAdded, addDataRequest };
+};
+
 export {
   useLanguageListData,
   useAddLanguage,
@@ -199,4 +259,6 @@ export {
   useAddPerson,
   useDeletePerson,
   useUpdatePerson,
+  usePersonLanguageListData,
+  useAddPersonLanguage,
 };

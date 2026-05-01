@@ -1,14 +1,24 @@
-import React, { useEffect } from "react";
+import React, { use, useEffect } from "react";
 import styles from "./App.module.css";
 import AddPeople from "./AddPeople";
-import { useAddPerson, useDeletePerson, usePeopleListData, useUpdatePerson } from "../services/dataService";
+import {
+  useAddPerson,
+  useAddPersonLanguage,
+  useDeletePerson,
+  usePeopleListData,
+  useUpdatePerson,
+} from "../services/dataService";
 import PeopleCard from "./PeopleCard";
+import DataContext from "../context/data-context";
 
 const PeopleList = () => {
+  const dataCtx = use(DataContext);
+
   const [peopleList, setPeopleList] = usePeopleListData();
   const addPerson = useAddPerson();
   const deletePerson = useDeletePerson();
   const updatePerson = useUpdatePerson();
+  const addPersonLanguage = useAddPersonLanguage();
 
   useEffect(() => {
     setPeopleList();
@@ -41,6 +51,10 @@ const PeopleList = () => {
     updatePerson.patchDataRequest(updateData);
   };
 
+  const handleAddPersonLanguage = (id, newLanguage) => {
+    addPersonLanguage.addDataRequest(id, newLanguage);
+  };
+
   return (
     <div className="row">
       <h2>Current Users</h2>
@@ -55,6 +69,8 @@ const PeopleList = () => {
             handleDelete={handleDelete}
             check={softCheckIfPersonExist}
             handleUpdate={handleUpdate}
+            languageList={dataCtx.languageList}
+            handleAddLanguage={handleAddPersonLanguage}
           />
         ))}
         <AddPeople handleAdd={handleAdd} check={softCheckIfPersonExist} />
