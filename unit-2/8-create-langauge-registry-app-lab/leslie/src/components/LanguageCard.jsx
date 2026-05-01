@@ -13,20 +13,22 @@ const LanguageCard = (props) => {
     <div className={styles.card}>
       <div className={styles.title}>{props.languageName}</div>
       <div className={styles.sub}>{`Added on ${props.createdDate}`}</div>
-      <div className={styles.actions}>
-        {!isDelete ? (
-          <>
-            <div>Actions:</div>
+      <div className={styles.break}></div>
+      {!isDelete ? (
+        <>
+          <div className={styles.actions}>
             <button onClick={() => setIsDelete(true)}>DELETE</button>
-          </>
-        ) : (
-          <>
-            <div>Delete?</div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className={styles.emphasis}>Please confirm delete request:</div>
+          <div className={styles.actions}>
             <button onClick={handleDelete}>CONFIRM</button>
             <button onClick={() => setIsDelete(false)}>CANCEL</button>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

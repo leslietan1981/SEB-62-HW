@@ -54,62 +54,69 @@ const PeopleCard = (props) => {
         />
       ) : (
         <>
-          <div className={styles.title}>{props.name}</div>
-          <div className={styles.sub}>{`Age: ${props.age}`}</div>
-          <div className={styles.sub}>{`Country: ${props.country}`}</div>
-          <div className={styles.actions}>
+          <div className={styles.cardSection}>
+            <div className={styles.title}>{props.name}</div>
+            <div className={styles.sub}>{`Age: ${props.age}`}</div>
+            <div className={styles.sub}>{`Country: ${props.country}`}</div>
+            <div className={styles.break}></div>
             {!isDelete ? (
               <>
-                <div>Profile Actions:</div>
-                <button onClick={handleEnableEdit}>EDIT</button>
-                <button onClick={() => setIsDelete(true)}>DELETE</button>
+                <div className={styles.actions}>
+                  <button onClick={handleEnableEdit}>EDIT</button>
+                  <button onClick={() => setIsDelete(true)}>DELETE</button>
+                </div>
               </>
             ) : (
               <>
-                <div>Delete?</div>
-                <button onClick={handleDelete}>CONFIRM</button>
-                <button onClick={() => setIsDelete(false)}>CANCEL</button>
+                <div className={styles.emphasis}>Please confirm delete request:</div>
+                <div className={styles.actions}>
+                  <button onClick={handleDelete}>CONFIRM</button>
+                  <button onClick={() => setIsDelete(false)}>CANCEL</button>
+                </div>
               </>
             )}
           </div>
-          <div className={styles.break}></div>
-          <div className={styles.sub}>Known Languages:</div>
-          <>
+          <br />
+          <div className={styles.cardSection}>
+            <div className={styles.sub}>Known Languages:</div>
             {personLanguageList.map((language, idx) => (
               <div className={styles.sub} key={idx}>{`${idx + 1}. ${language}`}</div>
             ))}
-          </>
-          <div className={styles.actions}>
-            {isAddLanguage && (
-              <>
-                <div>Add?</div>
-                <AddPersonLanguage
-                  languageList={props.languageList}
-                  personLanguageList={personLanguageList}
-                  handleAdd={handleAddLanguage}
-                  handleCancel={() => setIsAddLanguage(false)}
-                />
-              </>
-            )}
-            {isRemoveLanguage && (
-              <>
-                <div>Remove?</div>
-                <RemovePersonLanguage
-                  personLanguageList={personLanguageList}
-                  handleRemove={handleRemoveLanguage}
-                  handleCancel={() => setIsRemoveLanguage(false)}
-                />
-              </>
-            )}
-            {!isAddLanguage && !isRemoveLanguage && (
-              <>
-                <div>Language Actions:</div>
-                <button onClick={() => setIsAddLanguage(true)}>ADD</button>
-                <button onClick={() => setIsRemoveLanguage(true)} disabled={personLanguageList.length === 0}>
-                  REMOVE
-                </button>
-              </>
-            )}
+            <div className={styles.break}></div>
+            <>
+              {isAddLanguage && (
+                <>
+                  <div className={styles.emphasis}>Select language to add:</div>
+
+                  <AddPersonLanguage
+                    languageList={props.languageList}
+                    personLanguageList={personLanguageList}
+                    handleAdd={handleAddLanguage}
+                    handleCancel={() => setIsAddLanguage(false)}
+                  />
+                </>
+              )}
+              {isRemoveLanguage && (
+                <>
+                  <div className={styles.emphasis}>Select language to remove:</div>
+                  <RemovePersonLanguage
+                    personLanguageList={personLanguageList}
+                    handleRemove={handleRemoveLanguage}
+                    handleCancel={() => setIsRemoveLanguage(false)}
+                  />
+                </>
+              )}
+              {!isAddLanguage && !isRemoveLanguage && (
+                <>
+                  <div className={styles.actions}>
+                    <button onClick={() => setIsAddLanguage(true)}>ADD</button>
+                    <button onClick={() => setIsRemoveLanguage(true)} disabled={personLanguageList.length === 0}>
+                      REMOVE
+                    </button>
+                  </div>
+                </>
+              )}
+            </>
           </div>
         </>
       )}

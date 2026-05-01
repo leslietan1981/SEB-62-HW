@@ -10,8 +10,20 @@
 .card {
   padding: 1rem;
   border: 1px solid #00000022;
-  background-color: #fff;
+  background-color: rgb(220, 215, 154);
   border-radius: 0.5rem;
+}
+
+.cardSection {
+  border-radius: 0.5rem;
+  background-color: rgb(252, 250, 229);
+  padding: 0.4rem;
+}
+
+.break {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .title {
@@ -22,6 +34,12 @@
 .sub {
   font-size: 0.8rem;
   color: #00000099;
+}
+
+.emphasis {
+  font-size: 0.8rem;
+  color: #000000dd;
+  margin-bottom: 0.2rem;
 }
 
 .form {
@@ -46,6 +64,7 @@
   background-color: #000000;
   color: #fff;
   width: 25%;
+  font-size: 0.6rem;
 }
 
 .form button:disabled,
@@ -64,17 +83,14 @@
 
 .actions {
   margin-top: 0.5rem;
-  border: 1px solid rgba(120, 54, 0, 0.25);
-  border-radius: 0.25rem;
-  padding: 0.5rem;
   display: flex;
   column-gap: 0.5rem;
-  font-weight: 600;
   align-items: baseline;
 }
 
-.break {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.select {
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid #000000;
+  min-width: 80%;
 }
