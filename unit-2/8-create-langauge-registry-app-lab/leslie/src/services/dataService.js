@@ -251,6 +251,37 @@ const useAddPersonLanguage = () => {
   return { isAdded, addDataRequest };
 };
 
+const useRemovePersonLanguage = () => {
+  const [isRemoved, setIsRemoved] = useState(false);
+
+  const deleteDataRequest = async (personId, languageToRemove) => {
+    setIsRemoved(false);
+
+    try {
+      const res = await fetch(domain + "/lab/users/languages", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: personId,
+          language: languageToRemove,
+        }),
+      });
+
+      if (res.ok) {
+        setIsRemoved(true);
+      } else {
+        throw new Error("Fetch error.");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { isRemoved, deleteDataRequest };
+};
+
 export {
   useLanguageListData,
   useAddLanguage,
@@ -261,4 +292,5 @@ export {
   useUpdatePerson,
   usePersonLanguageListData,
   useAddPersonLanguage,
+  useRemovePersonLanguage,
 };

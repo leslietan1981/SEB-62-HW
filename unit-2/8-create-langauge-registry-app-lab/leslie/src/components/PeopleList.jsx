@@ -6,6 +6,7 @@ import {
   useAddPersonLanguage,
   useDeletePerson,
   usePeopleListData,
+  useRemovePersonLanguage,
   useUpdatePerson,
 } from "../services/dataService";
 import PeopleCard from "./PeopleCard";
@@ -19,6 +20,7 @@ const PeopleList = () => {
   const deletePerson = useDeletePerson();
   const updatePerson = useUpdatePerson();
   const addPersonLanguage = useAddPersonLanguage();
+  const removePersonLanguage = useRemovePersonLanguage();
 
   useEffect(() => {
     setPeopleList();
@@ -55,6 +57,10 @@ const PeopleList = () => {
     addPersonLanguage.addDataRequest(id, newLanguage);
   };
 
+  const handleRemovePersonLanguage = (id, languageToRemove) => {
+    removePersonLanguage.deleteDataRequest(id, languageToRemove);
+  };
+
   return (
     <div className="row">
       <h2>Current Users</h2>
@@ -71,6 +77,7 @@ const PeopleList = () => {
             handleUpdate={handleUpdate}
             languageList={dataCtx.languageList}
             handleAddLanguage={handleAddPersonLanguage}
+            handleRemoveLanguage={handleRemovePersonLanguage}
           />
         ))}
         <AddPeople handleAdd={handleAdd} check={softCheckIfPersonExist} />

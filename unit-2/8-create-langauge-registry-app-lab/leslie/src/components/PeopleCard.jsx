@@ -3,17 +3,18 @@ import styles from "./App.module.css";
 import EditPeople from "./EditPeople";
 import { usePersonLanguageListData } from "../services/dataService";
 import AddPersonLanguage from "./AddPersonLanguage";
+import RemovePersonLanguage from "./RemovePersonLanguage";
 
 const PeopleCard = (props) => {
   const [isDelete, setIsDelete] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [personLanguageList, setPersonLanguageList] = usePersonLanguageListData();
   const [isAddLanguage, setIsAddLanguage] = useState(false);
-  const [isDeleteLanguage, setIsDeleteLanguage] = useState(false);
+  const [isRemoveLanguage, setIsRemoveLanguage] = useState(false);
 
   useEffect(() => {
     setPersonLanguageList(props.id);
-  }, [isAddLanguage]);
+  }, [isAddLanguage, isRemoveLanguage]);
 
   const handleDelete = () => {
     props.handleDelete(props.id);
@@ -32,6 +33,11 @@ const PeopleCard = (props) => {
   const handleAddLanguage = (newLanguage) => {
     setIsAddLanguage(false);
     props.handleAddLanguage(props.id, newLanguage);
+  };
+
+  const handleRemoveLanguage = (languageToRemove) => {
+    setIsRemoveLanguage(false);
+    props.handleRemoveLanguage(props.id, languageToRemove);
   };
 
   return (
@@ -85,11 +91,23 @@ const PeopleCard = (props) => {
                 />
               </>
             )}
-            {!isAddLanguage && !isDeleteLanguage && (
+            {isRemoveLanguage && (
+              <>
+                <div>Remove?</div>
+                <RemovePersonLanguage
+                  personLanguageList={personLanguageList}
+                  handleRemove={handleRemoveLanguage}
+                  handleCancel={() => setIsRemoveLanguage(false)}
+                />
+              </>
+            )}
+            {!isAddLanguage && !isRemoveLanguage && (
               <>
                 <div>Language Actions:</div>
                 <button onClick={() => setIsAddLanguage(true)}>ADD</button>
-                <button>REMOVE</button>
+                <button onClick={() => setIsRemoveLanguage(true)} disabled={personLanguageList.length === 0}>
+                  REMOVE
+                </button>
               </>
             )}
           </div>
